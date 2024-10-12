@@ -8,9 +8,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const feedbackDiv = document.getElementById('form-feedback');
 
     function validation(){
-        const usernameInput = document.getElementById('username').value.trim();
-        const emailInput = document.getElementById('email').value.trim();
-        const passwordInput = document.getElementById('password').value.trim();
+
+         //Get the value of the input fields and trim any whitespaces.
+
+        const username = document.getElementById('username').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const password = document.getElementById('password').value.trim();
 
         let isValid = true;
 
@@ -20,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         //Validate username length.
 
-        if(usernameInput.length < 3){
+        if(username.length < 3){
             messages.push("The username should have at least 3 characters!");
             isValid = false;
         }
@@ -29,14 +32,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let regex = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)/;
 
-        if(!regex.test(emailInput)){
+        if(!regex.test(email)){
             messages.push("Enter a valid email address!");
             isValid =false;
         }
 
         //Validate password.
 
-        if(passwordInput.length < 8){
+        if(password.length < 8){
             messages.push("Password should have at least 8 characters!");
             isValid = false;
         }
@@ -58,13 +61,8 @@ document.addEventListener('DOMContentLoaded', () => {
     form.addEventListener('submit', (event) => {
         event.preventDefault();
 
-        //Get the value of the input fields and trim any whitespaces.
+       
         validation();
         
-
-       
-
-        
-
     });
 });
