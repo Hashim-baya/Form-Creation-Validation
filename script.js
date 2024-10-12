@@ -7,12 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('registration-form');
     const feedbackDiv = document.getElementById('form-feedback');
 
-    //Listen for the submit event
-    form.addEventListener('submit', (event) => {
-        event.preventDefault();
-
-        //Get the value of the input fields and trim any whitespaces.
-
+    function validation(){
         const usernameInput = document.getElementById('username').value.trim();
         const emailInput = document.getElementById('email').value.trim();
         const passwordInput = document.getElementById('password').value.trim();
@@ -32,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         //Validate email address to ensure it contains @ and '.'
 
-        let regex = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
+        let regex = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)/;
 
         if(!regex.test(emailInput)){
             messages.push("Enter a valid email address!");
@@ -56,6 +51,18 @@ document.addEventListener('DOMContentLoaded', () => {
             feedbackDiv.innerHTML = messages.join('<br>');
             feedbackDiv.style.color = '#dc3545';
         }
+
+        
+    }
+    //Listen for the submit event
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        //Get the value of the input fields and trim any whitespaces.
+        validation();
+        
+
+       
 
         
 
